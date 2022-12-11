@@ -1,0 +1,36 @@
+version: '3'
+
+services: 
+    mysql:
+        build: ./mysql
+        tty: true
+        ports: 
+            - "3306:3306"
+        container_name: mysql
+        environment: 
+            MYSQL_USER: atkk
+            MYSQL_ROOT_PASSWORD: atkkintern202212
+            MYSQL_PASSWORD: atkkintern202212
+            MYSQL_DATABASE: ECsite
+        platform: linux/x86_64
+
+            
+    python:
+        build: ./python
+        tty: true
+        ports: 
+            - "8080:8080"
+        container_name: python
+        volumes: 
+            - ./python:/usr/src
+
+    web:
+        build: ./react
+        tty: true
+        ports: 
+            - "3000:3000"
+        container_name: web
+        volumes: 
+            - ./react:/usr/src
+        links:
+            - python
