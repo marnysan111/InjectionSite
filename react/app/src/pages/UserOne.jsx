@@ -12,7 +12,7 @@ function UserOne() {
     
     const selectUserOne = e => {
         e.preventDefault();
-        axios.post('http://localhost:8080/userOne',{
+        axios.post('/userOne',{
           "name": name,
           "email": email
         }).then(res => {

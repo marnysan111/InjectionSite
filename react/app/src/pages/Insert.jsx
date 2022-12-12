@@ -17,7 +17,7 @@ function Insert() {
       alert("メールアドレスが未入力です")
       return false
     }
-      axios.post('http://localhost:8080/insert',{
+      axios.post('/insert',{
         "name": name,
         "email": email
       }).then(res => {
